@@ -17,6 +17,7 @@ export const {
   signIn,
 } = NextAuth({
   adapter: PrismaAdapter(db),
+  basePath: "/api/auth",
   providers: [
     Github({
       clientId: GITHUB_CLIENT_ID,
