@@ -6,8 +6,12 @@ export function Profile() {
 
   return (
     <div>
-      Profile
-      {session?.data?.user ? <p>Logado</p> : <p>Deslogado</p>}
+      Profile Client
+      {session?.data?.user ? (
+        <p>Logado {JSON.stringify(session?.data?.user)}</p>
+      ) : (
+        <p>Deslogado</p>
+      )}
     </div>
   );
 }
