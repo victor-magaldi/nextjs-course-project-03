@@ -1,4 +1,4 @@
-// import { auth } from "@/auth";
+import { auth } from "@/auth";
 
 import * as actions from "@/actions";
 import { Button } from "@nextui-org/react";
