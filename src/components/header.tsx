@@ -10,7 +10,7 @@ import {
 } from "@nextui-org/react";
 import { auth } from "@/auth";
 
-export async function header() {
+export async function Header() {
   const session = await auth();
 
   return (
