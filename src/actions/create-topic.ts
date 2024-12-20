@@ -14,6 +14,9 @@ export async function createTopic(formData: FormData) {
   const description = formData.get("descriptions");
 
   const result = createTopicSchema.safeParse({ name, description });
+  if (!result.success) {
+    console.log(result.error.flatten().fieldErrors);
+  }
 
   console.log("result", result);
 }
