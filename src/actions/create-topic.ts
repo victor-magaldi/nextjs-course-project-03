@@ -9,7 +9,7 @@ const createTopicSchema = z.object({
   description: z.string().min(10),
 });
 
-export async function createTopic(formData: FormData) {
+export async function createTopic(formState: number, formData: FormData) {
   const name = formData.get("name");
   const description = formData.get("descriptions");
 
@@ -18,5 +18,5 @@ export async function createTopic(formData: FormData) {
     console.log(result.error.flatten().fieldErrors);
   }
 
-  console.log("result", result);
+  return 10;
 }
