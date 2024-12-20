@@ -1,4 +1,5 @@
 "use server";
+import { error } from "console";
 import { z } from "zod";
 
 const createTopicSchema = z.object({
@@ -9,14 +10,29 @@ const createTopicSchema = z.object({
   description: z.string().min(10),
 });
 
-export async function createTopic(formState: number, formData: FormData) {
+interface CreateTopicFormState {
+  errors: Record<string, string[]>;
+}
+
+export async function createTopic(
+  formState: CreateTopicFormState,
+  formData: FormData
+): Promise<CreateTopicFormState> {
   const name = formData.get("name");
-  const description = formData.get("descriptions");
+  const description = formData.get("description");
 
   const result = createTopicSchema.safeParse({ name, description });
+
   if (!result.success) {
-    console.log(result.error.flatten().fieldErrors);
+    return {
+      errors: result.error.flatten().fieldErrors,
+    };
   }
 
-  return 10;
+  return {
+    errors: {
+      name: [],
+      description: [],
+    },
+  };
 }
