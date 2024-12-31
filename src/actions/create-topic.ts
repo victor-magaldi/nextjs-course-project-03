@@ -29,10 +29,6 @@ export async function createTopic(
   const result = createTopicSchema.safeParse({ name, description });
 
   if (!result.success) {
-    console.log("server victor", {
-      errors: result.error.flatten().fieldErrors,
-    });
-
     return {
       errors: result.error.flatten().fieldErrors,
     };
