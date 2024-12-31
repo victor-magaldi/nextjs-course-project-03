@@ -49,7 +49,6 @@ export function TopicCreateForm() {
             />
             {formState.errors?._form?.length ? (
               <div className="rounded p-2 bg-red-200 border border-red-400">
-                {" "}
                 {formState.errors?._form?.join(", ")}{" "}
               </div>
             ) : null}
