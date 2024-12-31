@@ -36,7 +36,7 @@ export function TopicCreateForm() {
               label="Name"
               labelPlacement="outside"
               placeholder="Name"
-              isInvalid={formState.errors?.name.length ? true : false}
+              isInvalid={formState.errors?.name?.length ? true : false}
               errorMessage={formState.errors?.name?.join(", ")}
             />
             <Textarea
@@ -44,9 +44,15 @@ export function TopicCreateForm() {
               label="Description"
               labelPlacement="outside"
               placeholder="Describe your topic"
-              isInvalid={formState.errors?.description.length ? true : false}
+              isInvalid={formState.errors?.description?.length ? true : false}
               errorMessage={formState.errors?.description?.join(", ")}
             />
+            {formState.errors?._form?.length ? (
+              <div className="rounded p-2 bg-red-200 border border-red-400">
+                {" "}
+                {formState.errors?._form?.join(", ")}{" "}
+              </div>
+            ) : null}
             <Button type="submit">Submit</Button>
           </div>
         </form>
