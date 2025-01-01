@@ -18,11 +18,7 @@ export function TopicCreateForm() {
       description: [],
     },
   });
-  console.log(
-    "victor",
-    formState.errors?.name ? true : false,
-    formState.errors
-  );
+
   return (
     <Popover placement="left">
       <PopoverTrigger>
