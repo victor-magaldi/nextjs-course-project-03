@@ -26,8 +26,6 @@ export async function createTopic(
   const name = formData.get("name");
   const description = formData.get("description");
 
-  await new Promise((resolve) => setTimeout(resolve, 2500));
-
   const result = createTopicSchema.safeParse({ name, description });
 
   if (!result.success) {
