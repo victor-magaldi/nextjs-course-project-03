@@ -9,7 +9,7 @@ import {
   PopoverContent,
 } from "@nextui-org/react";
 import * as actions from "@/actions";
-import { FormButton } from "../common/form-button";
+import { FormButton } from "@/components/common/form-button";
 
 export function TopicCreateForm() {
   const [formState, action] = useFormState(actions.createTopic, {
