@@ -47,7 +47,13 @@ export async function createPost(
       where: { slug },
       select: { id: true },
     });
-    console.log(topic);
+    if (!topic) {
+      return {
+        errors: {
+          _form: ["Cannot find topic."],
+        },
+      };
+    }
   } catch (error) {
     console.log(error);
   }
