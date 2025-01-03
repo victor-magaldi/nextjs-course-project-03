@@ -5,11 +5,11 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { z } from "zod";
 import { auth } from "@/auth";
+import { db } from "@/db";
 
 const createPostSchema = z.object({
   title: z.string().min(3),
   content: z.string().min(10),
-  slug: z.string(),
 });
 
 interface CreatePostFormState {
@@ -41,6 +41,15 @@ export async function createPost(
         _form: ["You must be signed in to do this."],
       },
     };
+  }
+  try {
+    const topic = await db.topic.findFirst({
+      where: { slug },
+      select: { id: true },
+    });
+    console.log(topic);
+  } catch (error) {
+    console.log(error);
   }
 
   return {
