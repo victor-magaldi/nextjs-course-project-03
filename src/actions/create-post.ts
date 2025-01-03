@@ -9,7 +9,7 @@ import { auth } from "@/auth";
 const createPostSchema = z.object({
   title: z.string().min(3),
   content: z.string().min(10),
-  slug: z.string().min(10),
+  slug: z.string(),
 });
 
 interface CreatePostFormState {
@@ -20,7 +20,6 @@ export async function createPost(
   formState: CreatePostFormState,
   formData: FormData
 ): Promise<CreatePostFormState> {
-  console.log("slug->", slug, formData.values());
   const title = formData.get("title");
   const content = formData.get("content");
 
