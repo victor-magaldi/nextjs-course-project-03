@@ -19,7 +19,7 @@ export async function Header() {
   // const session = await auth(); if to use, all pages will become dynamic pages;
 
   return (
-    <Navbar className="shadow mb-6">
+    <Navbar className="bg-customGreen shadow mb-6">
       <NavbarBrand>
         <Link href={"/"} className="font-bold">
           Discuss
@@ -27,7 +27,7 @@ export async function Header() {
       </NavbarBrand>
       <NavbarContent justify="center">
         <NavbarItem>
-          <Input />
+          <Input placeholder="buscar" />
         </NavbarItem>
       </NavbarContent>
 

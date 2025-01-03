@@ -10,6 +10,13 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      colors: {
+        customGreen: {
+          light: "#a7f3d0",
+          DEFAULT: "#10b981",
+          dark: "#047857",
+        },
+      },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
@@ -20,4 +27,5 @@ const config: Config = {
   darkMode: "class",
   plugins: [nextui()],
 };
+
 export default config;
