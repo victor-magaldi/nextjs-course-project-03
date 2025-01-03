@@ -1,4 +1,4 @@
-import { PostCreateForm } from "@/components/posts/create-form";
+import { PostCreateForm } from "@/components/posts/post-create-form";
 interface TopicShowPageProps {
   params: {
     slug: string;
