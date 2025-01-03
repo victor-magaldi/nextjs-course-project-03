@@ -22,7 +22,7 @@ export async function createPost(
   const content = formData.get("content");
 
   const result = createPostSchema.safeParse({ title, content });
-  console.log(result);
+
   if (!result.success) {
     console.log(result.error.flatten().fieldErrors);
 

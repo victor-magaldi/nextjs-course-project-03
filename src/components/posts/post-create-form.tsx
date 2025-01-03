@@ -15,7 +15,6 @@ export function PostCreateForm() {
   const [formState, action] = useFormState(actions.createPost, {
     errors: {},
   });
-  console.log("formState", formState);
 
   return (
     <Popover placement="left">
