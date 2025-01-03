@@ -18,7 +18,6 @@ export function TopicCreateForm() {
       description: [],
     },
   });
-
   return (
     <Popover placement="left">
       <PopoverTrigger>
