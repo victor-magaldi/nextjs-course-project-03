@@ -6,6 +6,7 @@ import { redirect } from "next/navigation";
 import { z } from "zod";
 import { auth } from "@/auth";
 import { db } from "@/db";
+import { paths } from "@/paths";
 
 const createPostSchema = z.object({
   title: z.string().min(3),
@@ -42,23 +43,44 @@ export async function createPost(
       },
     };
   }
+  const topic = await db.topic.findFirst({
+    where: { slug },
+    select: { id: true },
+  });
+  if (!topic) {
+    return {
+      errors: {
+        _form: ["Cannot find topic."],
+      },
+    };
+  }
+
+  let post;
   try {
-    const topic = await db.topic.findFirst({
-      where: { slug },
-      select: { id: true },
+    post = await db.post.create({
+      data: {
+        title: result.data.title,
+        content: result.data.content,
+        userId: session.user.id as string,
+        topicId: topic.id,
+      },
     });
-    if (!topic) {
+  } catch (error) {
+    if (error instanceof Error) {
       return {
         errors: {
-          _form: ["Cannot find topic."],
+          _form: [error.message],
+        },
+      };
+    } else {
+      return {
+        errors: {
+          _form: ["Failed to create new post"],
         },
       };
     }
-  } catch (error) {
-    console.log(error);
   }
 
-  return {
-    errors: {},
-  };
+  revalidatePath(paths.topicShow(slug));
+  redirect(paths.postShow(slug, post.id));
 }
