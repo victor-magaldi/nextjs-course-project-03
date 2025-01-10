@@ -8,6 +8,7 @@ export type CommentWithAuthor = Comment & {
 export function fetchCommentByPostId(
   postId: string
 ): Promise<CommentWithAuthor[]> {
+  console.log("chamada db");
   return db.comment.findMany({
     where: {
       postId,

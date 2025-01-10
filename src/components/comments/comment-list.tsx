@@ -1,13 +1,13 @@
 import { CommentShow } from "@/components/comments/comment-show";
-import { CommentWithAuthor } from "@/db/queries/comments";
+import { CommentWithAuthor, fetchCommentByPostId } from "@/db/queries/comments";
 
 interface CommentListProps {
-  fetchData: () => Promise<CommentWithAuthor[]>;
+  postId: string;
 }
 
 // TODO: Get a list of comments from somewhere
-export async function CommentList({ fetchData }: CommentListProps) {
-  const comments = await fetchData();
+export async function CommentList({ postId }: CommentListProps) {
+  const comments = await fetchCommentByPostId(postId);
   const topLevelComments = comments.filter(
     (comment) => comment.parentId === null
   );
@@ -17,6 +17,7 @@ export async function CommentList({ fetchData }: CommentListProps) {
         key={comment.id}
         commentId={comment.id}
         comments={comments}
+        postId={postId}
       />
     );
   });
