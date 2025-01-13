@@ -4,16 +4,11 @@ import {
   NavbarBrand,
   NavbarContent,
   NavbarItem,
-  Input,
-  Button,
-  Avatar,
-  Popover,
-  PopoverTrigger,
-  PopoverContent,
 } from "@nextui-org/react";
 // import { auth } from "@/auth";
 // import * as actions from "@/actions";
 import HeaderAuth from "./header-auth";
+import { SearchInput } from "./search-input";
 
 export async function Header() {
   // const session = await auth(); if to use, all pages will become dynamic pages;
@@ -27,7 +22,7 @@ export async function Header() {
       </NavbarBrand>
       <NavbarContent justify="center">
         <NavbarItem>
-          <Input placeholder="buscar" />
+          <SearchInput />
         </NavbarItem>
       </NavbarContent>
 
