@@ -9,6 +9,7 @@ import {
 // import * as actions from "@/actions";
 import HeaderAuth from "./header-auth";
 import { SearchInput } from "./search-input";
+import { Suspense } from "react";
 
 export async function Header() {
   // const session = await auth(); if to use, all pages will become dynamic pages;
@@ -22,7 +23,9 @@ export async function Header() {
       </NavbarBrand>
       <NavbarContent justify="center">
         <NavbarItem>
-          <SearchInput />
+          <Suspense>
+            <SearchInput />
+          </Suspense>
         </NavbarItem>
       </NavbarContent>
 
